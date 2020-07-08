@@ -51,7 +51,11 @@ func Zip(lists... interface{}) (chan []interface{}) {
 
 	ch :=make(chan []interface{},size)
 	defer close(ch)
-
+	
+	if len(listslice)==0{
+		return ch
+	}
+	
 	for i:=0;i<size;i++ {
 		var s1 []interface{}
 		for x:= 0;x<len(lists);x++ {
